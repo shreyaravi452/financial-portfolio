@@ -6,6 +6,7 @@ import { InsightsActionsComponent } from './insights-actions/insights-actions.co
 import { MarketMoversComponent } from './market-movers/market-movers.component';
 import { GainersLosersComponent } from './gainers-losers/gainers-losers.component';
 import { ActionsComponent } from './actions/actions.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ import { ActionsComponent } from './actions/actions.component';
     InsightsActionsComponent,
     MarketMoversComponent,
     GainersLosersComponent,
-    ActionsComponent
+    ActionsComponent,
+    CommonModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

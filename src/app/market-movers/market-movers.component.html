@@ -1,6 +1,30 @@
 <div>
     <div class="mm-title">
-        <p id="mm">Market Movers</p>
+        <div class="top">
+            <p id="mm">Market Movers</p>
+            <div class="button-container">
+                <button 
+                class="button active" 
+                (click)="selectPLType('percent')"
+                [class.active]="isActive('percent')">%</button>
+                <button 
+                class="button" 
+                (click)="selectPLType('dollar')"
+                [class.active]="isActive('dollar')">$</button>
+            </div>
+        </div>
         <hr>
+    </div>
+    <div style="display: flex;">
+        <app-overview></app-overview>
+        <app-overview></app-overview>
+        <app-overview></app-overview>
+        <app-overview></app-overview>
+    </div>
+    <div>
+        <app-gainers-losers></app-gainers-losers>
+    </div>
+    <div>
+        <app-gainers-losers></app-gainers-losers>
     </div>
 </div>

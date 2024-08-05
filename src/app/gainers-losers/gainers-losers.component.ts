@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './gainers-losers.component.css'
 })
 export class GainersLosersComponent {
-
+  title: String = "Gainers";
 }
