@@ -1,0 +1,16 @@
+#app-my-watchlist{
+    border: none;
+    padding: none;
+    width: 250px;
+}
+
+.app{
+    display: flex;
+    justify-content: space-between;
+}
+
+#app-insights-actions{
+    border: none;
+    padding: none;
+    width: 372px;
+}
