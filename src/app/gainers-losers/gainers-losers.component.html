@@ -3,7 +3,20 @@
         <p id="title">Your {{title}}</p>
         <hr>
     </div>
-    <div>
-        
+    <div class="holding-profit" *ngIf="isProfit">
+        <div>
+            <p id="name">Apple Inc</p>
+        </div>
+        <div>
+            <p id="pl">0.65</p>
+        </div>
+    </div>
+    <div class="holding-loss" *ngIf="!isProfit">
+        <div>
+            <p id="name">Apple Inc</p>
+        </div>
+        <div>
+            <p id="pl">-0.65</p>
+        </div>
     </div>
 </div>
