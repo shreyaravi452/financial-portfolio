@@ -1,10 +1,14 @@
 <div id="wi">
     <div class="left">
-        <p id="symbol">Apple Inc (AAPL)</p>
-        <p id="sector">Information Technology</p>
+        <p id="symbol">{{watchlistItem.name}} ({{watchlistItem.symbol}})</p>
+        <p id="sector">{{watchlistItem.sector}}</p>
     </div>
-    <div class="right">
-        <p id="cp">$219.86</p>
-        <p id="plp">+0.69%</p>
+    <div *ngIf="watchlistItem.isProfit" class="right-profit">
+        <p id="cp">${{watchlistItem.currentPrice}}</p>
+        <p id="plp">+{{watchlistItem.profitLossPercent}}%</p>
+    </div>
+    <div *ngIf="!watchlistItem.isProfit" class="right-loss">
+        <p id="cp">${{watchlistItem.currentPrice}}</p>
+        <p id="plp">-{{watchlistItem.profitLossPercent}}%</p>
     </div>
 </div>

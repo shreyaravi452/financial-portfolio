@@ -2,7 +2,7 @@
     <div id="title">
         My Holdings
     </div>
-    <div>
-        <app-watchlist-item></app-watchlist-item>
+    <div style="padding-bottom: 5px;" *ngFor="let item of watchlistItems">
+        <app-watchlist-item [watchlistItem]="item"></app-watchlist-item>
     </div>
 </div>

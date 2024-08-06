@@ -1,18 +1,18 @@
 <div style="width: fit-content; justify-content: space-around; padding: 0 13px;">
-    <div class="profit" *ngIf="isProfit">
+    <div class="profit" *ngIf="item.isProfit">
         <div>
-            <p id="pinc">+0.65%</p>
+            <p id="pinc">+{{item.profitLossPercent}}%</p>
         </div>
         <div style="text-align: center;">
-            <p id="symbol">AAPL</p>
+            <p id="symbol">{{item.symbol}}</p>
         </div>
     </div>
-    <div class="loss" *ngIf="!isProfit">
+    <div class="loss" *ngIf="!item.isProfit">
         <div>
-            <p id="ldec">+0.65%</p>
+            <p id="ldec">-{{item.profitLossPercent}}%</p>
         </div>
         <div>
-            <p id="symbol">AAPL</p>
+            <p id="symbol">{{item.symbol}}</p>
         </div>
     </div>
 </div>

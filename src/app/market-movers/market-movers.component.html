@@ -16,15 +16,15 @@
         <hr>
     </div>
     <div style="display: flex;">
+        <app-overview *ngFor="let item of watchlistItems" [item]="item"></app-overview>
+        <!-- <app-overview></app-overview>
         <app-overview></app-overview>
-        <app-overview></app-overview>
-        <app-overview></app-overview>
-        <app-overview></app-overview>
+        <app-overview></app-overview> -->
     </div>
     <div>
-        <app-gainers-losers></app-gainers-losers>
+        <app-gainers-losers [items]="gainers" [isProfit]="gain"></app-gainers-losers>
     </div>
     <div>
-        <app-gainers-losers></app-gainers-losers>
+        <app-gainers-losers [items]="losers" [isProfit]="loss"></app-gainers-losers>
     </div>
 </div>
