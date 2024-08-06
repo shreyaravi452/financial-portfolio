@@ -1,0 +1,50 @@
+
+.center-panel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    line-height: 25px;
+    font-size: medium;
+}
+.title #title{
+    margin: unset;
+}
+hr{
+    margin: unset;
+}
+.holding-profit{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    line-height: 25px;
+    font-size: small;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+.holding-profit #name{
+    margin: unset;
+}
+.holding-profit #pl{
+    margin: unset;
+    color: #41C3A9;
+}
+.holding-loss{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    line-height: 25px;
+    font-size: small;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+.holding-loss #name{
+    margin: unset;
+}
+.holding-loss #pl{
+    margin: unset;
+    color: #f13851;
+}
