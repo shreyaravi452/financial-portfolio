@@ -3,20 +3,22 @@
         <p id="title">Your {{title}}</p>
         <hr>
     </div>
-    <div class="holding-profit" *ngIf="isProfit">
-        <div>
-            <p id="name">Apple Inc</p>
+    <div *ngFor="let item of items">
+        <div class="holding-profit" *ngIf="item.isProfit">
+            <div>
+                <p id="name">{{item.name}}</p>
+            </div>
+            <div>
+                <p id="pl">{{item.profitLossPercent}}</p>
+            </div>
         </div>
-        <div>
-            <p id="pl">0.65</p>
-        </div>
-    </div>
-    <div class="holding-loss" *ngIf="!isProfit">
-        <div>
-            <p id="name">Apple Inc</p>
-        </div>
-        <div>
-            <p id="pl">-0.65</p>
+        <div class="holding-loss" *ngIf="!item.isProfit">
+            <div>
+                <p id="name">{{item.name}}</p>
+            </div>
+            <div>
+                <p id="pl">-{{item.profitLossPercent}}</p>
+            </div>
         </div>
     </div>
 </div>

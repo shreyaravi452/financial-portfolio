@@ -5,10 +5,50 @@
     </div>
     <div class="buttons">
         <div>
-            <button class="button">Buy</button>
+            <button class="button" (click)="openBuy('buy')">Buy</button>
         </div>
         <div>
-            <button class="button">Sell</button>
+            <button class="button" (click)="openSell('sell')">Sell</button>
+        </div>
+        <div *ngIf="activePopup === 'buy'" class="popup-overlay">
+            <div class="popup-content">
+              <button class="close-btn" (click)="closeBuy()">X</button>
+              <form (ngSubmit)="onBuy('buy')" #form1="ngForm">
+                <label for="text1">Symbol:</label>
+                <input id="text1" name="text1" ngModel required>
+        
+                <label for="text2">Current Price:</label>
+                <input id="text2" name="text2" ngModel required>
+        
+                <label for="number">Quantity:</label>
+                <select id="number" name="number" ngModel required>
+                  <option *ngFor="let n of qty" [value]="n">{{ n }}</option>
+                </select>
+        
+                <button class="buy-sell-btn" type="submit">Buy</button>
+                <button class="cancel-btn" type="button" (click)="closeBuy()">Cancel</button>
+              </form>
+            </div>
+        </div>
+        <div *ngIf="activePopup === 'sell'" class="popup-overlay">
+            <div class="popup-content">
+              <button class="close-btn" (click)="closeSell()">X</button>
+              <form (ngSubmit)="onSell('sell')" #form2="ngForm">
+                <label for="text3">Symbol:</label>
+                <input id="text3" name="text3" ngModel required>
+        
+                <label for="text4">Selling Price:</label>
+                <input id="text4" name="text4" ngModel required>
+        
+                <label for="number">Quantity:</label>
+                <select id="number" name="number" ngModel required>
+                  <option *ngFor="let n of qty" [value]="n">{{ n }}</option>
+                </select>
+        
+                <button class="buy-sell-btn" type="submit">Sell</button>
+                <button class="cancel-btn" type="button" (click)="closeSell()">Cancel</button>
+              </form>
+            </div>
         </div>
     </div>
 </div>

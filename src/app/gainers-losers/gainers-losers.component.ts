@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { StockBought } from '../interfaces/Stock';
 
 @Component({
   selector: 'app-gainers-losers',
@@ -11,7 +12,12 @@ import { Component } from '@angular/core';
   styleUrl: './gainers-losers.component.css'
 })
 export class GainersLosersComponent {
-  isProfit: boolean = true;
-  title: String = this.isProfit==true? "Gainers":"Losers";
+  @Input() items!: StockBought[];
+  @Input() isProfit!: boolean;
+  title: string = "";
   
+  ngOnInit(){
+    console.log("hi from gainers/losers");
+    this.title = this.isProfit? "Gainers" : "Losers";
+  }
 }

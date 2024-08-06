@@ -17,7 +17,7 @@ hr{
     font-size: small;
     display: flex;
     justify-content: space-between;
-    padding: 5px;
+    padding: 0px 5px;
 }
 .holding-profit #name{
     margin: unset;
@@ -33,7 +33,7 @@ hr{
     font-size: small;
     display: flex;
     justify-content: space-between;
-    padding: 5px;
+    padding: 0px 5px;
 }
 .holding-loss #name{
     margin: unset;

@@ -31,10 +31,10 @@
     margin: unset;
 }
 
-.right{
+.right-profit{
     padding: 12px;
 }
-.right #cp{
+.right-profit #cp{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 15px;
     font-weight: 500;
@@ -44,7 +44,7 @@
     color: #41C3A9; 
     margin: unset;   
 }
-.right #plp{
+.right-profit #plp{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 12px;
     font-weight: 400;
@@ -52,5 +52,28 @@
     letter-spacing: 0.035em;
     text-align: right;
     color: #41C3A9;
+    margin: unset;
+}
+.right-loss{
+    padding: 12px;
+}
+.right-loss #cp{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 14.32px;
+    letter-spacing: -0.01em;
+    text-align: right;
+    color: #f13851; 
+    margin: unset;   
+}
+.right-loss #plp{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.32px;
+    letter-spacing: 0.035em;
+    text-align: right;
+    color: #f13851;
     margin: unset;
 }

@@ -9,6 +9,7 @@ import { ActionsComponent } from './actions/actions.component';
 import { CommonModule } from '@angular/common';
 import { CenterPanelComponent } from './center-panel/center-panel.component';
 import { ChartComponent } from './chart/chart.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ import { ChartComponent } from './chart/chart.component';
     CommonModule,
     ChartComponent,
     CenterPanelComponent,
+    FormsModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
