@@ -7,6 +7,7 @@ import { MarketMoversComponent } from './market-movers/market-movers.component';
 import { GainersLosersComponent } from './gainers-losers/gainers-losers.component';
 import { ActionsComponent } from './actions/actions.component';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ import { CommonModule } from '@angular/common';
     MarketMoversComponent,
     GainersLosersComponent,
     ActionsComponent,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
