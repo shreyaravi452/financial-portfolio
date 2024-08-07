@@ -9,7 +9,8 @@
                 <p id="name">{{item.name}}</p>
             </div>
             <div>
-                <p id="pl">{{item.profitLossPercent}}</p>
+                <p id="pl" *ngIf="displayType=='percent'">+{{item.profitLossPercent}}%</p>
+                <p id="pl" *ngIf="displayType=='dollar'">${{item.profitLossDollar}}</p>
             </div>
         </div>
         <div class="holding-loss" *ngIf="!item.isProfit">
@@ -17,7 +18,8 @@
                 <p id="name">{{item.name}}</p>
             </div>
             <div>
-                <p id="pl">-{{item.profitLossPercent}}</p>
+                <p id="pl" *ngIf="displayType=='percent'">-{{item.profitLossPercent}}%</p>
+                <p id="pl" *ngIf="displayType=='dollar'">${{item.profitLossDollar}}</p>
             </div>
         </div>
     </div>

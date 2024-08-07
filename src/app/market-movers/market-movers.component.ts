@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './market-movers.component.css'
 })
 export class MarketMoversComponent {
-  activePLType: String = "percent";
+  activePLType: string = "percent";
   gain: boolean = true;
   loss: boolean = false;
   watchlistItems: StockBought[] = [
@@ -66,7 +66,6 @@ export class MarketMoversComponent {
   losers: StockBought[] = [];
   
   ngOnInit(): void{
-    console.log("called");
     this.getGainers();
     this.getLosers();
   }
@@ -75,14 +74,12 @@ export class MarketMoversComponent {
       if(item.isProfit == true)
       this.gainers.push(item);
     }));
-    console.log(this.gainers);
   }
   getLosers(){
     this.watchlistItems.forEach((item => {
       if(item.isProfit == false)
       this.losers.push(item);
     }));
-    console.log(this.losers);
   }
   selectPLType(buttonId: string){
     this.activePLType = buttonId;

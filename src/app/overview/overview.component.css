@@ -1,6 +1,8 @@
 .profit #pinc{
     background-color: aliceblue;
-    width: fit-content;
+    width: 65px;
+    align-items: center;
+    text-align: center;
     padding: 5px;
     border: solid 1px;
     border-radius: 4px;
@@ -12,7 +14,7 @@
 }
 .profit #symbol{
     width: fit-content;
-    padding: 5px 13px;
+    padding: 5px 20px;
     text-align: center;
     margin: unset;
     font-weight: 500;
@@ -21,7 +23,9 @@
 }
 .loss #ldec{
     background-color: #f3bec5;
-    width: fit-content;
+    width: 65px;
+    align-items: center;
+    text-align: center;
     padding: 5px;
     border: solid 1px;
     border-radius: 4px;
@@ -33,7 +37,7 @@
 }
 .loss #symbol{
     width: fit-content;
-    padding: 5px 13px;
+    padding: 5px 20px;
     text-align: center;
     margin: unset;
     font-weight: 500;

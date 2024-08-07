@@ -18,24 +18,20 @@ export class ActionsComponent {
 
   openBuy(popupId: string) {
     this.activePopup = popupId;
-    console.log(popupId);
   }
   closeBuy() {
     this.activePopup = null;
   }
   onBuy(popupId: string) {
-    console.log(`Form from ${popupId} submitted`);
     this.closeBuy();
   }
   openSell(popupId: string) {
     this.activePopup = popupId;
-    console.log(popupId);
   }
   closeSell() {
     this.activePopup = null;
   }
   onSell(popupId: string) {
-    console.log(`Form from ${popupId} submitted`);
     this.closeSell();
   }
 }

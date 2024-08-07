@@ -14,10 +14,10 @@ import { StockBought } from '../interfaces/Stock';
 export class GainersLosersComponent {
   @Input() items!: StockBought[];
   @Input() isProfit!: boolean;
+  @Input() displayType: string = "percent";
   title: string = "";
   
   ngOnInit(){
-    console.log("hi from gainers/losers");
     this.title = this.isProfit? "Gainers" : "Losers";
   }
 }

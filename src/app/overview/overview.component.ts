@@ -16,4 +16,5 @@ export class OverviewComponent {
   
 
   @Input() item!: StockBought;
+  @Input() displayType: string = "percent";
 }
