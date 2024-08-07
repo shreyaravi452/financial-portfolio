@@ -8,6 +8,7 @@ import { GainersLosersComponent } from './gainers-losers/gainers-losers.componen
 import { ActionsComponent } from './actions/actions.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

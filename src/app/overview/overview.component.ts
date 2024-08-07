@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnInit } from '@angular/core';
 import { StockBought } from '../interfaces/Stock';
+import { PortfolioService } from '../portfolio.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-overview',
@@ -13,8 +15,38 @@ import { StockBought } from '../interfaces/Stock';
   styleUrl: './overview.component.css'
 })
 export class OverviewComponent {
-  
+  stockData: any;
+  dashboardData: any;
+
+  constructor(private portfolioService: PortfolioService) { }
 
   @Input() item!: StockBought;
   @Input() displayType: string = "percent";
+
+  ngOnInit(): void {
+    // this.getStockStats('AAPL');
+    // this.loadDashboardData();
+  }
+
+  // getStockStats(symbol: string): void {
+  //   this.portfolioService.getStockStats(symbol).subscribe(
+  //     data => {
+  //       this.stockData = data;
+  //     },
+  //     error => {
+  //       console.error('Error fetching stock stats', error);
+  //     }
+  //   );
+  // }
+  // loadDashboardData(): void {
+  //   this.portfolioService.getDashboardData().subscribe(
+  //     data => {
+  //       this.dashboardData = data;
+  //       console.log(this.dashboardData);
+  //     },
+  //     error => {
+  //       console.error('Error fetching dashboard data', error);
+  //     }
+  //   );
+  // }
 }

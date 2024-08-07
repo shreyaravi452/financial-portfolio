@@ -1,0 +1,17 @@
+<div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      (input)="onSearchChange()"
+      placeholder="Search..."
+    />
+    <ul *ngIf="searchResults.length > 0" class="results-list">
+      <li
+        *ngFor="let result of searchResults"
+        (click)="onResultClick(result)"
+      >
+        {{ result }}
+      </li>
+    </ul>
+  </div>
+  
