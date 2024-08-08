@@ -21,11 +21,11 @@
           <label for="text1">Symbol:</label>
           <app-search (selectedSymbol)="handleSelectedSymbol($event)"></app-search>
 
-          <label for="text2">Current Price:</label>
-          <input id="text2" name="text2" ngModel required>
+          <label for="text2">Buy Price:</label>
+          <input id="text2" name="text2" [(ngModel)]="currentBuyPrice" required>
 
           <label for="number">Quantity:</label>
-          <select id="number" name="number" ngModel required>
+          <select id="number" name="number" [(ngModel)]="selectedBuyQuantity" required>
             <option *ngFor="let n of qty" [value]="n">{{ n }}</option>
           </select>
 

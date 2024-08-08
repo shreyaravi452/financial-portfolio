@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { WatchlistItemComponent } from '../watchlist-item/watchlist-item.component';
 import { Holding, StockBought } from '../interfaces/Stock';
 import { CommonModule } from '@angular/common';
@@ -81,6 +81,9 @@ export class MyWatchlistComponent {
     // this.loadDashboardData();
     this.getWatchlistItems();
     // this.getStockStats("CSCO");
+  }
+  ngOnChanges(): void {
+    this.getWatchlistItems();
   }
   loadDashboardData(): void {
     this.portfolioService.getDashboardData().subscribe(

@@ -22,9 +22,12 @@ export class PortfolioService {
     return this.http.get(this.getDashboardUrl);
   }
   postAction(action: string, symbol: string, quantity: number, price: number): Observable<any> {
+    console.log("entered post action");
     const body = { action, symbol, quantity, price };
-    return this.http.post(`${this.baseUrl}/dashboard`, body);
+    console.log("body formed", body);
+    return this.http.post(`${this.getDashboardUrl}`, body);
   }
+
   changeData(data: any) {
     this.dataSource.next(data);
   }
