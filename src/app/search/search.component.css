@@ -1,0 +1,29 @@
+.search-container {
+    position: relative;
+    width: 300px;
+  }
+  
+  .results-list {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: medium;
+    font-weight: 300;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+  
+  .results-list li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .results-list li:hover {
+    background-color: #f0f0f0;
+  }
+  

@@ -29,60 +29,102 @@ hr{
     position: relative;
   }
   
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    position: relative;
-    width: min-content;
-    height: max-content;
-  }
-  
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background: black;
-    color: white;
-    cursor: pointer;
-    border-radius: 2px;
-  }
-  
-  .buy-sell-btn {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: small;
-    border-style: hidden;
-    border-radius: 9px;
-    background-color: black;
-    color: white;
-    padding: 3px 5px;
-  }
-  .cancel-btn {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: small;
-    border-style: hidden;
-    border-radius: 9px;
-    background-color: white;
-    color: black;
-    padding: 3px 5px;
-    border: solid black 1px;
-  }
-  label {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: medium;
-    font-weight: 500;
-  }
+  /* src/app/standalone.component.css */
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px; /* Adjust the width as needed */
+  max-height: 80vh; /* Ensure the popup doesn't exceed viewport height */
+  overflow-y: auto; /* Add scroll if content overflows */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between elements */
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between form elements */
+}
+
+label {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: medium;
+  font-weight: 500;
+}
+
+.search-container {
+  position: relative;
+  width: 100%; /* Take full width of the popup */
+}
+
+.results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.results-list li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.results-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.buy-sell-btn, .cancel-btn {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: medium;
+  border-style: hidden;
+  border-radius: 9px;
+  padding: 6px 12px;
+}
+
+.buy-sell-btn {
+  background-color: black;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: white;
+  color: black;
+  border: solid black 1px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px; /* Space between buttons */
+}

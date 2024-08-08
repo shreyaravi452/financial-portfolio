@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { CenterPanelComponent } from './center-panel/center-panel.component';
 import { ChartComponent } from './chart/chart.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
