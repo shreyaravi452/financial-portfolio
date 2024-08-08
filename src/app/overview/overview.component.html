@@ -1,8 +1,8 @@
 <div style="width: fit-content; justify-content: space-around; padding: 0 8px;">
     <div class="profit" *ngIf="item.isProfit">
         <div>
-            <p id="pinc" *ngIf="displayType=='percent'">+{{item.profitLossPercent}}%</p>
-            <p id="pinc" *ngIf="displayType=='dollar'">${{item.profitLossDollar}}</p>
+            <p id="pinc" *ngIf="displayType=='percent'">+{{item.profitLossPercent | number:'1.2-2'}}%</p>
+            <p id="pinc" *ngIf="displayType=='dollar'">${{item.profitLossDollar | number:'1.2-2'}}</p>
         </div>
         <div style="text-align: center;">
             <p id="symbol">{{item.symbol}}</p>
@@ -10,8 +10,8 @@
     </div>
     <div class="loss" *ngIf="!item.isProfit">
         <div>
-            <p id="ldec" *ngIf="displayType=='percent'">-{{item.profitLossPercent}}%</p>
-            <p id="ldec" *ngIf="displayType=='dollar'">${{item.profitLossDollar}}</p>
+            <p id="ldec" *ngIf="displayType=='percent'">-{{item.profitLossPercent | number:'1.2-2'}}%</p>
+            <p id="ldec" *ngIf="displayType=='dollar'">${{item.profitLossDollar | number:'1.2-2'}}</p>
         </div>
         <div>
             <p id="symbol">{{item.symbol}}</p>

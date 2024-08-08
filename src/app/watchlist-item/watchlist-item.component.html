@@ -5,10 +5,10 @@
     </div>
     <div *ngIf="watchlistItem.isProfit" class="right-profit">
         <p id="cp">${{watchlistItem.currentPrice}}</p>
-        <p id="plp">+{{watchlistItem.profitLossPercent}}%</p>
+        <p id="plp">+{{watchlistItem.profitLossPercent | number:'1.2-2'}}%</p>
     </div>
     <div *ngIf="!watchlistItem.isProfit" class="right-loss">
         <p id="cp">${{watchlistItem.currentPrice}}</p>
-        <p id="plp">-{{watchlistItem.profitLossPercent}}%</p>
+        <p id="plp">-{{watchlistItem.profitLossPercent | number:'1.2-2'}}%</p>
     </div>
 </div>
