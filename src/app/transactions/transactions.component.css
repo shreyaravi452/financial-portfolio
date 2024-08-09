@@ -35,3 +35,13 @@ td {
 #sell {
     color: #f13851;
 }
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Light grey background for even rows */
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    /* White background for odd rows (optional) */
+}
