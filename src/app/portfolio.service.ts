@@ -25,7 +25,7 @@ export class PortfolioService {
   getHistoricalData(symbol: string, startDate: string, endDate: string): Observable<any> {
     return this.http.get<any>(`${this.getHistoricalUrl}?symbol=${symbol}&start_date=${startDate}&end_date=${endDate}`);
   }
-  getNetworthGraphData(symbol: string, startDate: string, endDate: string): Observable<any> {
+  getNetworthGraphData(startDate: string, endDate: string): Observable<any> {
     return this.http.get<any>(`${this.getNetworthGraphUrl}?start_date=${startDate}&end_date=${endDate}`);
   }
   postAction(action: string, symbol: string, quantity: number, price: number): Observable<any> {
@@ -33,6 +33,9 @@ export class PortfolioService {
     const body = { action, symbol, quantity, price };
     console.log("body formed", body);
     return this.http.post(`${this.baseUrl}/dashboard`, body);
+  }
+  changeData(data: any) {
+    this.dataSource.next(data);
   }
 
 }
