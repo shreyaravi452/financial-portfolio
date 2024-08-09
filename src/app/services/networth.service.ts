@@ -15,3 +15,4 @@ export class NetworthService {
     return this.http.get<any>(this.apiUrl);
   }
 }
+

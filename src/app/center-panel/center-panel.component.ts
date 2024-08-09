@@ -1,31 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartComponent } from '../chart/chart.component';
-import { NetworthService } from '../services/networth.service';
-import { provideHttpClient } from '@angular/common/http';
+import { PortfolioService } from '../portfolio.service';
+
 @Component({
   selector: 'app-center-panel',
   standalone: true,
   imports: [
     ChartComponent, 
-    NetworthService,
-    provideHttpClient,
+
   ],
   templateUrl: './center-panel.component.html',
-  styleUrl: './center-panel.component.css'
+  styleUrl: './center-panel.component.css',
+ 
 })
 
 
 export class CenterPanelComponent implements OnInit {
   networth: number = 0;
 
-  constructor(private networthService: NetworthService) {}
+  constructor(private networthService: PortfolioService) {}
 
   ngOnInit(): void {
     this.fetchNetworth();
   }
 
   fetchNetworth(): void {
-    this.networthService.getNetworth().subscribe(
+    this.networthService.getDashboardData().subscribe(
       data => {
         this.networth = data.net_worth; // Ensure this matches your Flask response structure
       },
