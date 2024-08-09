@@ -38,24 +38,20 @@ export class ActionsComponent {
   }
   handleSelectedSymbol(symbol: string) {
     this.selectedSymbol = symbol;
-    console.log('Selected Symbol', this.selectedSymbol);
   }
   openBuy(popupId: string) {
     this.activePopup = popupId;
-    console.log("buy opened");
   }
   closeBuy() {
     this.activePopup = null;
   }
   onBuy(popupId: string) {
-    console.log("submitting buy");
     if (this.selectedSymbol != "") {
-      console.log("selected symbol in if stmt");
       this.portfolioService.postAction("buy", this.selectedSymbol, this.selectedBuyQuantity, this.currentBuyPrice)
         .subscribe(
           response => {
-            console.log("Response from backend:", response);
-            this.getTransactions();
+            window.location.reload();
+            // this.getTransactions();
           },
           error => {
             console.error("Error occurred:", error);
@@ -72,14 +68,12 @@ export class ActionsComponent {
     this.activePopup = null;
   }
   onSell(popupId: string) {
-    console.log("submitting sell");
     if (this.selectedSymbol != "") {
-      console.log("selected symbol in if stmt");
       this.portfolioService.postAction("sell", this.selectedSymbol, this.selectedSellQuantity, this.currentSellPrice)
         .subscribe(
           response => {
-            console.log("Response from backend:", response);
-            this.getTransactions();
+            window.location.reload();
+            // this.getTransactions();
           },
           error => {
             console.error("Cannot sell stock", error);
@@ -97,8 +91,18 @@ export class ActionsComponent {
   getTransactions() {
     this.portfolioService.getDashboardData().subscribe(
       data => {
-        console.log(data);
         this.transactions = data.transactions;
+      }
+    );
+  }
+  resetPortfolio(popupId: string) {
+    this.portfolioService.resetPortfolio(popupId).subscribe(
+      response => {
+        window.location.reload();
+        // this.getTransactions();
+      },
+      error => {
+        console.error("Cannot reset portfolio", error);
       }
     );
   }

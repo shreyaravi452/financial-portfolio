@@ -22,13 +22,20 @@ export class PortfolioService {
     return this.http.get(this.getDashboardUrl);
   }
   postAction(action: string, symbol: string, quantity: number, price: number): Observable<any> {
-    console.log("entered post action");
     const body = { action, symbol, quantity, price };
-    console.log("body formed", body);
     return this.http.post(`${this.getDashboardUrl}`, body);
   }
-
+  resetPortfolio(action: string): Observable<any> {
+    const body = { action };
+    return this.http.post(`${this.getDashboardUrl}`, body);
+  }
   changeData(data: any) {
     this.dataSource.next(data);
+  }
+  getSectorStats(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/sector_stats`);
+  }
+  getCapStats(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/cap_stats`);
   }
 }

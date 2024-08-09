@@ -1,23 +1,25 @@
 <div>
-    <table>
-        <thead>
-            <tr>
-                <th>Symbol</th>
-                <th>Name</th>
-                <th>Action</th>
-                <th>Quantity</th>
-                <th>Bought/Sold At</th>
-                <th>Current Price</th>
+    <table class="table">
+        <caption id="caption">My Transactions</caption>
+        <thead class="head">
+            <tr class="row">
+                <th class="header">Symbol</th>
+                <th class="header">Name</th>
+                <th class="header">Action</th>
+                <th class="header">Quantity</th>
+                <th class="header">Bought/Sold At</th>
+                <th class="header">Current Price</th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let item of transactionsEntries">
-                <td>{{item.symbol}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.action}}</td>
-                <td>{{item.quantity}}</td>
-                <td>{{item.bsPrice}}</td>
-                <td>{{item.currPrice}}</td>
+        <tbody class="body">
+            <tr class="row" *ngFor="let item of transactionsEntries">
+                <td class="cell">{{item.symbol}}</td>
+                <td id="stockname" class="cell">{{item.name}}</td>
+                <td *ngIf="item.action=='buy'" class="cell" id="buy">{{item.action}}</td>
+                <td *ngIf="item.action=='sell'" class="cell" id="sell">{{item.action}}</td>
+                <td class="cell">{{item.quantity}}</td>
+                <td class="cell">{{item.bsPrice}}</td>
+                <td class="cell">{{item.currPrice}}</td>
             </tr>
         </tbody>
     </table>

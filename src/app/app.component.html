@@ -2,14 +2,26 @@
 
 <div class="app">
     <div id="app-my-watchlist">
-        <app-my-watchlist></app-my-watchlist>
+        <app-my-watchlist [transactions]="transactions" [dashboardData]="dashboardData" [holdings]="holdings"
+            [watchlistItems]="watchlistItems"></app-my-watchlist>
     </div>
 
     <div>
-        <p>hi</p>
+        <div>
+
+        </div>
+
+        <div>
+            <app-sector-chart></app-sector-chart>
+        </div>
+        <div>
+            <app-market-cap-chart></app-market-cap-chart>
+        </div>
+
     </div>
 
     <div id="app-insights-actions">
-        <app-insights-actions></app-insights-actions>
+        <app-insights-actions [transactions]="transactions" [dashboardData]="dashboardData" [holdings]="holdings"
+            [watchlistItems]="watchlistItems"></app-insights-actions>
     </div>
 </div>

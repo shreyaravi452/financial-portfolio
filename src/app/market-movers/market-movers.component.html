@@ -3,20 +3,15 @@
         <div class="top">
             <p id="mm">Market Movers</p>
             <div class="button-container">
-                <button 
-                class="button active" 
-                (click)="selectPLType('percent')"
-                [class.active]="isActive('percent')">%</button>
-                <button 
-                class="button" 
-                (click)="selectPLType('dollar')"
-                [class.active]="isActive('dollar')">$</button>
+                <button class="button active" (click)="selectPLType('percent')"
+                    [class.active]="isActive('percent')">%</button>
+                <button class="button" (click)="selectPLType('dollar')" [class.active]="isActive('dollar')">$</button>
             </div>
         </div>
         <hr>
     </div>
     <div style="display: flex;">
-        <app-overview *ngFor="let item of watchlistItems" [item]="item" [displayType]="activePLType"></app-overview>
+        <app-overview *ngFor="let item of overviewItems" [item]="item" [displayType]="activePLType"></app-overview>
         <!-- <app-overview></app-overview>
         <app-overview></app-overview>
         <app-overview></app-overview> -->

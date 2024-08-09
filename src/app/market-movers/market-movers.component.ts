@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnInit } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { GainersLosersComponent } from '../gainers-losers/gainers-losers.component';
 import { OverviewComponent } from '../overview/overview.component';
 import { Holding, StockBought } from '../interfaces/Stock';
@@ -17,66 +17,26 @@ import { PortfolioService } from '../portfolio.service';
   templateUrl: './market-movers.component.html',
   styleUrl: './market-movers.component.css'
 })
-export class MarketMoversComponent {
+export class MarketMoversComponent implements OnInit, OnChanges {
   activePLType: string = "percent";
   gain: boolean = true;
   loss: boolean = false;
-  stockData: any;
-  transactions: any;
-  dashboardData: any;
-  holdings: Holding[] = [];
-  holding: StockBought = {
-    currentPrice: 0,
-    symbol: "",
-    name: "",
-    refPrice: 0,
-    isProfit: false,
-    profitLossPercent: 0,
-    profitLossDollar: 0,
-    sector: ""
-  };
-  watchlistItems: StockBought[] = [
-    // {
-    //   currentPrice: 5269.75,
-    //   symbol: "CME",
-    //   name: "S&P Futures",
-    //   refPrice: 5200,
-    //   isProfit: true,
-    //   profitLossPercent: 1.03,
-    //   profitLossDollar: 53.75,
-    //   sector: "ABC"
-    // },
-    // {
-    //   currentPrice: 209.27,
-    //   symbol: "AAPL",
-    //   name: "Apple Inc.",
-    //   refPrice: 219.90,
-    //   isProfit: false,
-    //   profitLossPercent: 4.82,
-    //   profitLossDollar: 10.59,
-    //   sector: "Information Technology"
-    // },
-    // {
-    //   currentPrice: 5269.75,
-    //   symbol: "CME",
-    //   name: "S&P Futures",
-    //   refPrice: 5200,
-    //   isProfit: true,
-    //   profitLossPercent: 1.03,
-    //   profitLossDollar: 53.75,
-    //   sector: "ABC"
-    // },
-    // {
-    //   currentPrice: 209.27,
-    //   symbol: "AAPL",
-    //   name: "Apple Inc.",
-    //   refPrice: 219.90,
-    //   isProfit: false,
-    //   profitLossPercent: 4.82,
-    //   profitLossDollar: 10.59,
-    //   sector: "Information Technology"
-    // }
-  ]
+  // stockData: any;
+  @Input() transactions: any;
+  @Input() dashboardData: any;
+  @Input() holdings: Holding[] = [];
+  // holding: StockBought = {
+  //   currentPrice: 0,
+  //   symbol: "",
+  //   name: "",
+  //   refPrice: 0,
+  //   isProfit: false,
+  //   profitLossPercent: 0,
+  //   profitLossDollar: 0,
+  //   sector: ""
+  // };
+  @Input() watchlistItems: StockBought[] = []
+  overviewItems: StockBought[] = [];
   gainers: StockBought[] = [];
   losers: StockBought[] = [];
   receivedData: any;
@@ -87,18 +47,27 @@ export class MarketMoversComponent {
     // this.portfolioService.currentData.subscribe(data => {
     //   this.watchlistItems = data;
     // });
-    this.getWatchlistItems();
-    console.log("watchlistitems received", this.watchlistItems);
-    // this.getGainers();
-    // this.getLosers();
+    // this.getWatchlistItems();
+    this.getGainers();
+    this.getLosers();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['watchlistItems']) {
+      this.overviewItems = this.getRandomItems(this.watchlistItems, 6);
+
+      this.getGainers();
+      this.getLosers();
+    }
   }
   getGainers() {
+    this.gainers = [];
     this.watchlistItems.forEach((item => {
       if (item.isProfit == true)
         this.gainers.push(item);
     }));
   }
   getLosers() {
+    this.losers = [];
     this.watchlistItems.forEach((item => {
       if (item.isProfit == false)
         this.losers.push(item);
@@ -110,72 +79,65 @@ export class MarketMoversComponent {
   isActive(buttonId: string): boolean {
     return this.activePLType === buttonId;
   }
-  loadDashboardData(): void {
-    this.portfolioService.getDashboardData().subscribe(
-      data => {
-        this.dashboardData = data;
-        this.holdings = this.dashboardData.holdings;
-        this.transactions = this.dashboardData.transactions;
-        // console.log("holdings", this.holdings);
-        // console.log("dashboard data", this.dashboardData);
-        // console.log("transactions", this.transactions);
-        // console.log("holdings in getwatchlistitems", this.holdings);
-        this.holdings.forEach((element) => {
-          this.getStockInfo(element.symbol, element.weighted_average_price);
-          this.stockData = {};
-          this.holding = {
-            currentPrice: 0,
-            symbol: "",
-            name: "",
-            refPrice: 0,
-            isProfit: false,
-            profitLossPercent: 0,
-            profitLossDollar: 0,
-            sector: ""
-          }
-        });
-        this.getGainers();
-        this.getLosers();
-        // console.log("watchlist items", this.watchlistItems);
-      },
-      error => {
-        // console.error('Error fetching dashboard data', error);
-      }
-    );
+  getRandomItems(items: any[], maxItems: number): StockBought[] {
+    const shuffled = items.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, maxItems);
   }
-  getStockStats(symbol: string, wap: string): void {
-    this.portfolioService.getStockStats(symbol).subscribe(
-      data => {
-        this.stockData = data;
-        // console.log("stock data", this.stockData);
-        this.holding.currentPrice = this.stockData?.currentPrice;
-        this.holding.symbol = symbol;
-        this.holding.name = this.stockData?.shortName;
-        this.holding.refPrice = Number(wap);
-        this.holding.isProfit = this.holding.currentPrice > this.holding.refPrice ? true : false;
-        this.holding.profitLossPercent = (Math.abs(this.holding.currentPrice - this.holding.refPrice) / this.holding.refPrice) * 100;
-        this.holding.profitLossDollar = Math.abs(this.holding.currentPrice - this.holding.refPrice);
-        this.holding.sector = this.stockData?.sector;
-        // console.log("current holding", this.holding);
-        this.watchlistItems.push(this.holding);
-        // this.getGainers();
-        // this.getLosers();
-        // console.log("symbol", symbol);
-        // console.log("current WLI", this.watchlistItems);
-      },
-      error => {
-        // console.error('Error fetching stock stats', error);
-      }
-    );
-  }
-  getStockInfo(symbol: string, wap: string) {
-    this.getStockStats(symbol, wap);
-  }
-  getWatchlistItems() {
-    this.loadDashboardData();
+  // loadDashboardData(): void {
+  //   this.portfolioService.getDashboardData().subscribe(
+  //     data => {
+  //       this.dashboardData = data;
+  //       this.holdings = this.dashboardData.holdings;
+  //       this.transactions = this.dashboardData.transactions;
+  //       this.holdings.forEach((element) => {
+  //         this.getStockInfo(element.symbol, element.weighted_average_price);
+  //         this.stockData = {};
+  //         this.holding = {
+  //           currentPrice: 0,
+  //           symbol: "",
+  //           name: "",
+  //           refPrice: 0,
+  //           isProfit: false,
+  //           profitLossPercent: 0,
+  //           profitLossDollar: 0,
+  //           sector: ""
+  //         }
+  //       });
+  //       this.getGainers();
+  //       this.getLosers();
+  //     },
+  //     error => {
+  //       // console.error('Error fetching dashboard data', error);
+  //     }
+  //   );
+  // }
+  // getStockStats(symbol: string, wap: string): void {
+  //   this.portfolioService.getStockStats(symbol).subscribe(
+  //     data => {
+  //       this.stockData = data;
+  //       this.holding.currentPrice = this.stockData?.currentPrice;
+  //       this.holding.symbol = symbol;
+  //       this.holding.name = this.stockData?.shortName;
+  //       this.holding.refPrice = Number(wap);
+  //       this.holding.isProfit = this.holding.currentPrice > this.holding.refPrice ? true : false;
+  //       this.holding.profitLossPercent = (Math.abs(this.holding.currentPrice - this.holding.refPrice) / this.holding.refPrice) * 100;
+  //       this.holding.profitLossDollar = Math.abs(this.holding.currentPrice - this.holding.refPrice);
+  //       this.holding.sector = this.stockData?.sector;
+  //       this.watchlistItems.push(this.holding);
+  //     },
+  //     error => {
+  //       // console.error('Error fetching stock stats', error);
+  //     }
+  //   );
+  // }
+  // getStockInfo(symbol: string, wap: string) {
+  //   this.getStockStats(symbol, wap);
+  // }
+  // getWatchlistItems() {
+  //   this.loadDashboardData();
 
-  }
-  sendData() {
-    this.portfolioService.changeData(this.watchlistItems);
-  }
+  // }
+  // sendData() {
+  //   this.portfolioService.changeData(this.watchlistItems);
+  // }
 }

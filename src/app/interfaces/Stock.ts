@@ -35,4 +35,6 @@ export interface TransactionEntry {
     quantity: number;
     bsPrice: number;
     currPrice: number;
+    // date: string;
+    // time: string;
 }
