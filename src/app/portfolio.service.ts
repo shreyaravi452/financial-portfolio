@@ -21,13 +21,15 @@ export class PortfolioService {
   getDashboardData(): Observable<any> {
     return this.http.get(this.getDashboardUrl);
   }
-  postAction(action: string, symbol: string, quantity: number, price: number): Observable<any> {
-    const body = { action, symbol, quantity, price };
+  postAction(action: string, symbol: string, quantity: number, price: number, date: string): Observable<any> {
+    const body = { action, symbol, quantity, price, date };
+    console.log("body", body);
     return this.http.post(`${this.getDashboardUrl}`, body);
   }
   resetPortfolio(action: string): Observable<any> {
-    const body = { action };
-    return this.http.post(`${this.getDashboardUrl}`, body);
+    let JSONString: string = '{"action": "reset", "symbol": "GOOGL", "quantity": 10, "price": 200, "date": "2024-08-09 12:45:00"}';
+    const resetData = JSON.parse(JSONString);
+    return this.http.post(`${this.getDashboardUrl}`, resetData);
   }
   changeData(data: any) {
     this.dataSource.next(data);

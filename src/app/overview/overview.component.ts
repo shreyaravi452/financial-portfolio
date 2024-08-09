@@ -32,33 +32,7 @@ export class OverviewComponent {
     // this.resetPortfolio();
   }
 
-  buyStock() {
-    this.portfolioService.postAction("buy", "AAL", 3, 53.75).subscribe(
-      response => {
-      },
-      error => {
-        console.error("error buying", error);
-      }
-    );
-  }
-  sellStock() {
-    this.portfolioService.postAction("sell", "GOOGL", 3, 53.75).subscribe(
-      response => {
-      },
-      error => {
-        console.error("error buying", error);
-      }
-    );
-  }
-  resetPortfolio() {
-    this.portfolioService.postAction("reset", "GOOGL", 3, 53.75).subscribe(
-      response => {
-      },
-      error => {
-        console.error("error buying", error);
-      }
-    );
-  }
+
   getStockStats(symbol: string): void {
     this.portfolioService.getStockStats(symbol).subscribe(
       data => {

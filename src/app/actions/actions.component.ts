@@ -46,8 +46,9 @@ export class ActionsComponent {
     this.activePopup = null;
   }
   onBuy(popupId: string) {
+    let date = this.getCurrentTimestamp();
     if (this.selectedSymbol != "") {
-      this.portfolioService.postAction("buy", this.selectedSymbol, this.selectedBuyQuantity, this.currentBuyPrice)
+      this.portfolioService.postAction("buy", this.selectedSymbol, this.selectedBuyQuantity, this.currentBuyPrice, date)
         .subscribe(
           response => {
             window.location.reload();
@@ -68,8 +69,9 @@ export class ActionsComponent {
     this.activePopup = null;
   }
   onSell(popupId: string) {
+    let date = this.getCurrentTimestamp();
     if (this.selectedSymbol != "") {
-      this.portfolioService.postAction("sell", this.selectedSymbol, this.selectedSellQuantity, this.currentSellPrice)
+      this.portfolioService.postAction("sell", this.selectedSymbol, this.selectedSellQuantity, this.currentSellPrice, date)
         .subscribe(
           response => {
             window.location.reload();
@@ -105,5 +107,9 @@ export class ActionsComponent {
         console.error("Cannot reset portfolio", error);
       }
     );
+  }
+  getCurrentTimestamp(): string {
+    const now = new Date();
+    return now.toISOString().slice(0, 19).replace('T', ' '); // Formats as YYYY-MM-DD HH:MM:SS
   }
 }
