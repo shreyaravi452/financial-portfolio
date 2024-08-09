@@ -17,7 +17,7 @@ export class SearchComponent {
 
   searchText: string = '';
   searchResults: string[] = [];
-  allStockSymbols: string[] = ['Apple', 'Banana', 'Cherry', 'Date', 'Fig', 'Grape', 'Kiwi'];
+  allStockSymbols: string[] = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 'META', 'NVDA', 'BABA', 'INTC', 'CSCO'];
 
   onSearchChange(): void {
     if (this.searchText) {

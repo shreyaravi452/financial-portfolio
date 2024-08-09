@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { StockBought } from './interfaces/Stock';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class PortfolioService {
   private getDashboardUrl = `${this.baseUrl}/dashboard`;
   private getHistoricalUrl =`${this.baseUrl}/historical_data`;
   private getNetworthGraphUrl =`${this.baseUrl}/networthgraph_data`;
+  private dataSource = new BehaviorSubject<any>(null);
+  currentData = this.dataSource.asObservable();
   constructor(private http: HttpClient) { }
 
   getStockStats(symbol: string): Observable<any> {
@@ -26,7 +29,9 @@ export class PortfolioService {
     return this.http.get<any>(`${this.getNetworthGraphUrl}?start_date=${startDate}&end_date=${endDate}`);
   }
   postAction(action: string, symbol: string, quantity: number, price: number): Observable<any> {
+    console.log("entered post action");
     const body = { action, symbol, quantity, price };
+    console.log("body formed", body);
     return this.http.post(`${this.baseUrl}/dashboard`, body);
   }
 

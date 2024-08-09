@@ -10,9 +10,9 @@
     <div>
       <button class="button" (click)="openSell('sell')">Sell</button>
     </div>
-    <div>
+    <!-- <div>
       <button class="button" (click)="openTransactions('view')">View Transactions</button>
-    </div>
+    </div> -->
     <!-- Buy Popup -->
     <div *ngIf="activePopup === 'buy'" class="popup-overlay">
       <div class="popup-content">
@@ -21,11 +21,11 @@
           <label for="text1">Symbol:</label>
           <app-search (selectedSymbol)="handleSelectedSymbol($event)"></app-search>
 
-          <label for="text2">Current Price:</label>
-          <input id="text2" name="text2" ngModel required>
+          <label for="text2">Buy Price:</label>
+          <input id="text2" name="text2" [(ngModel)]="currentBuyPrice" required>
 
           <label for="number">Quantity:</label>
-          <select id="number" name="number" ngModel required>
+          <select id="number" name="number" [(ngModel)]="selectedBuyQuantity" required>
             <option *ngFor="let n of qty" [value]="n">{{ n }}</option>
           </select>
 
@@ -47,10 +47,10 @@
           <app-search (selectedSymbol)="handleSelectedSymbol($event)"></app-search>
 
           <label for="text4">Selling Price:</label>
-          <input id="text4" name="text4" ngModel required>
+          <input id="text4" name="text4" [(ngModel)]="currentSellPrice" required>
 
           <label for="number">Quantity:</label>
-          <select id="number" name="number" ngModel required>
+          <select id="number" name="number" [(ngModel)]="selectedSellQuantity" required>
             <option *ngFor="let n of qty" [value]="n">{{ n }}</option>
           </select>
 
@@ -64,11 +64,18 @@
     </div>
 
     <!-- view transactions -->
-    <div *ngIf="activePopup === 'view'" class="popup-overlay">
+    <!-- <div *ngIf="activePopup === 'view'" class="popup-overlay">
       <div class="popup-content">
         <button class="close-btn" (click)="closeTransactions()">X</button>
+        <app-transactions></app-transactions>
+        <div class="buttons-container">
+          <button class="cancel-btn" type="button" (click)="closeTransactions()">Cancel</button>
+        </div>
       </div>
-    </div>
+    </div> -->
 
+  </div>
+  <div>
+    <app-transactions [transactions]="transactions"></app-transactions>
   </div>
 </div>

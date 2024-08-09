@@ -23,3 +23,16 @@ export interface Portfolio {
     top5Gainers: StockBought[];
     top5Losers: StockBought[];
 }
+export interface Holding {
+    quantity: string;
+    symbol: string;
+    weighted_average_price: string;
+}
+export interface TransactionEntry {
+    symbol: string;
+    name: string;
+    action: string;
+    quantity: number;
+    bsPrice: number;
+    currPrice: number;
+}
