@@ -1,16 +1,16 @@
-#app-my-watchlist{
+#app-my-watchlist {
     border: none;
     padding: none;
-    width: 250px;
+    width: fit-content;
 }
 
-.app{
+.app {
     display: flex;
     justify-content: space-between;
 }
 
-#app-insights-actions{
+#app-insights-actions {
     border: none;
     padding: none;
-    width: 372px;
+    width: fit-content;
 }

@@ -28,14 +28,23 @@ export class PortfolioService {
   getNetworthGraphData(startDate: string, endDate: string): Observable<any> {
     return this.http.get<any>(`${this.getNetworthGraphUrl}?start_date=${startDate}&end_date=${endDate}`);
   }
-  postAction(action: string, symbol: string, quantity: number, price: number): Observable<any> {
-    console.log("entered post action");
-    const body = { action, symbol, quantity, price };
-    console.log("body formed", body);
+  postAction(action: string, symbol: string, quantity: number, price: number, date: string): Observable<any> {
+    const body = { action, symbol, quantity, price, date };
+    console.log("body", body);
     return this.http.post(`${this.baseUrl}/dashboard`, body);
+  }
+  resetPortfolio(action: string): Observable<any> {
+    let JSONString: string = '{"action": "reset", "symbol": "GOOGL", "quantity": 10, "price": 200, "date": "2024-08-09 12:45:00"}';
+    const resetData = JSON.parse(JSONString);
+    return this.http.post(`${this.getDashboardUrl}`, resetData);
   }
   changeData(data: any) {
     this.dataSource.next(data);
   }
-
+  getSectorStats(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/sector_stats`);
+  }
+  getCapStats(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/cap_stats`);
+  }
 }

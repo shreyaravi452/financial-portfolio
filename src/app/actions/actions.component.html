@@ -10,9 +10,9 @@
     <div>
       <button class="button" (click)="openSell('sell')">Sell</button>
     </div>
-    <!-- <div>
-      <button class="button" (click)="openTransactions('view')">View Transactions</button>
-    </div> -->
+    <div>
+      <button class="button" (click)="resetPortfolio('reset')">Reset</button>
+    </div>
     <!-- Buy Popup -->
     <div *ngIf="activePopup === 'buy'" class="popup-overlay">
       <div class="popup-content">

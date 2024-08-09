@@ -32,36 +32,7 @@ export class OverviewComponent {
     // this.resetPortfolio();
   }
 
-  buyStock() {
-    this.portfolioService.postAction("buy", "AAL", 3, 53.75).subscribe(
-      response => {
-        console.log("Buy done", response);
-      },
-      error => {
-        console.error("error buying", error);
-      }
-    );
-  }
-  sellStock() {
-    this.portfolioService.postAction("sell", "GOOGL", 3, 53.75).subscribe(
-      response => {
-        console.log("Sell done", response);
-      },
-      error => {
-        console.error("error buying", error);
-      }
-    );
-  }
-  resetPortfolio() {
-    this.portfolioService.postAction("reset", "GOOGL", 3, 53.75).subscribe(
-      response => {
-        console.log("Reset done", response);
-      },
-      error => {
-        console.error("error buying", error);
-      }
-    );
-  }
+
   getStockStats(symbol: string): void {
     this.portfolioService.getStockStats(symbol).subscribe(
       data => {
@@ -76,7 +47,6 @@ export class OverviewComponent {
     this.portfolioService.getDashboardData().subscribe(
       data => {
         this.dashboardData = data;
-        console.log(this.dashboardData);
       },
       error => {
         console.error('Error fetching dashboard data', error);

@@ -1,0 +1,6 @@
+/* chart.component.css */
+#pie-chart-container {
+    width: 100%;
+    height: 275px;
+    /* Adjust height as needed */
+}
