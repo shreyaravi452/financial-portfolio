@@ -1,22 +1,37 @@
-<div *ngIf="isBrowser" style="display: block;">
+<div class="chart-container">
+  <div class="chart-wrapper" [ngClass]="{ 'hidden': !showFirstChart }" *ngIf="isBrowser && showFirstChart"
+    style="display: block;">
     <input type="text" [(ngModel)]="symbol" placeholder="Enter symbol">
     <input type="date" [(ngModel)]="startDate" placeholder="Enter start date">
     <input type="date" [(ngModel)]="endDate" placeholder="Enter end date">
     <button (click)="fetchData()">Fetch Data</button>
-    <canvas baseChart
-      [type]="'line'"
-      [datasets]="lineChartData.datasets"
-      [labels]="lineChartData.labels"
-      [data]="lineChartData"
-    >
+    <canvas baseChart [type]="'line'" [datasets]="lineChartData.datasets" [labels]="lineChartData.labels"
+      [data]="lineChartData">
     </canvas>
-    
+
+  </div>
+  <div class="chart-wrapper" [ngClass]="{ 'hidden': showFirstChart }" *ngIf="isBrowser && !showFirstChart"
+    style="display: block;">
+    <canvas baseChart [data]="networthChartData" [labels]="networthChartData.labels" [type]="'line'"></canvas>
+  </div>
+  <span style="margin-top: 100px;" class="chart-nav left" [ngClass]="{ 'disabled': showFirstChart }"
+    (click)="showFirstChart ? null : showFirstChart = true">&larr;</span>
+  <span style="margin-top: 100px;" class="chart-nav right" [ngClass]="{ 'disabled': !showFirstChart }"
+    (click)="showFirstChart ? showFirstChart = false : null">&rarr;</span>
 </div>
-<div *ngIf="isBrowser" style="display: block;">
-  <canvas
-    baseChart
-    [data]="networthChartData"
-    [labels]="networthChartData.labels"
-    [type]="'line'"
-  ></canvas>
-</div>
+
+<!-- <div class="chart-container">
+  <div class="chart-wrapper" [ngClass]="{ 'hidden': !showFirstChart }">
+    <canvas baseChart [type]="'line'" [datasets]="lineChartData.datasets" [labels]="lineChartData.labels"
+      [data]="lineChartData">
+    </canvas>
+  </div>
+  <div class="chart-wrapper" [ngClass]="{ 'hidden': showFirstChart }">
+    <canvas baseChart [data]="networthChartData" [labels]="networthChartData.labels" [type]="'line'">
+    </canvas>
+  </div>
+  <span class="chart-nav left" [ngClass]="{ 'disabled': showFirstChart }"
+    (click)="showFirstChart ? null : showFirstChart = true">&larr;</span>
+  <span class="chart-nav right" [ngClass]="{ 'disabled': !showFirstChart }"
+    (click)="showFirstChart ? showFirstChart = false : null">&rarr;</span>
+</div> -->

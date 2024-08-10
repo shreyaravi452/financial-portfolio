@@ -31,9 +31,11 @@ export class ChartComponent implements OnInit {
     }]
   };
 
-  public symbol: string='';
-  public startDate: string='';
-  public endDate: string ='';
+  public isBrowser: boolean = true; // Ensure this condition is set correctly
+  public symbol: string = 'AAPL'; // Default value
+  public startDate: string = '2024-07-15'; // Default value
+  public endDate: string = '2024-08-10'; // Default value
+  showFirstChart: boolean = true;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -43,17 +45,18 @@ export class ChartComponent implements OnInit {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
   ngOnInit(): void {
+    this.fetchHistoricalData();
+    this.fetchNetworthData();
   }
   fetchData(): void {
     this.fetchHistoricalData();
     this.fetchNetworthData();
   }
-  public isBrowser: boolean;
 
 
   fetchHistoricalData(): void {
 
- 
+
     this.portfolioService.getHistoricalData(this.symbol, this.startDate, this.endDate).subscribe(
       data => {
         if (!data || data.length === 0) {
@@ -63,12 +66,13 @@ export class ChartComponent implements OnInit {
 
         const labels = data.map((d: { x: string; }) => d.x); // Extract the labels (dates)
         const chartData = data.map((d: { y: number; }) => d.y); // Extract the data points
-    
+
         // Initialize lineChartData if it's not already initialized
-        
+
         // Assign labels and data to lineChartData
         this.lineChartData.labels = labels;
         this.lineChartData.datasets[0].data = chartData;
+        this.lineChartData.datasets[0].label = `Historical Data of ${this.symbol}`;
 
         // Manually trigger change detection
         this.cdr.detectChanges();
@@ -81,7 +85,7 @@ export class ChartComponent implements OnInit {
   fetchNetworthData(): void {
     const startDate = '2024-08-07';
     const endDate = '2024-08-09';
- 
+
     this.portfolioService.getNetworthGraphData(this.startDate, this.endDate).subscribe(
       data => {
         if (!data || data.length === 0) {
@@ -91,12 +95,13 @@ export class ChartComponent implements OnInit {
 
         const labels = data.map((d: { date: string; }) => d.date); // Extract the labels (dates)
         const chartData = data.map((d: { networth: number; }) => d.networth); // Extract the data points
-    
+
         // Initialize networthChartData if it's not already initialized
-        
+
         // Assign labels and data to networthChartData
         this.networthChartData.labels = labels;
         this.networthChartData.datasets[0].data = chartData;
+        this.networthChartData.datasets[0].label = "Networth";
 
         // Manually trigger change detection
         this.cdr.detectChanges();

@@ -4,11 +4,12 @@
     <div id="app-my-watchlist">
         <app-my-watchlist [transactions]="transactions" [dashboardData]="dashboardData" [holdings]="holdings"
             [watchlistItems]="watchlistItems"></app-my-watchlist>
+        <p class="no-stocks" *ngIf="watchlistItems.length == 0">No stocks to show!</p>
     </div>
 
     <div>
-        <div>
-
+        <div id="app-center-panel">
+            <app-center-panel></app-center-panel>
         </div>
 
         <div>
@@ -18,8 +19,6 @@
             <app-market-cap-chart></app-market-cap-chart>
         </div>
 
-    <div id="app-center-panel">
-        <app-center-panel></app-center-panel>
     </div>
 
     <div id="app-insights-actions">

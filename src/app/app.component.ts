@@ -92,7 +92,7 @@ export class AppComponent implements OnInit, OnChanges {
         holding.name = stockData?.shortName;
         holding.refPrice = Number(wap);
         holding.isProfit = holding.currentPrice > holding.refPrice ? true : false;
-        holding.profitLossPercent = (Math.abs(holding.currentPrice - holding.refPrice) / holding.refPrice) * 100;
+        holding.profitLossPercent = (Math.abs(holding.currentPrice - holding.refPrice) / holding.currentPrice) * 100;
         holding.profitLossDollar = Math.abs(holding.currentPrice - holding.refPrice);
         holding.sector = stockData?.sector;
         this.watchlistItems.push(holding);
