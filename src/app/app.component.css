@@ -14,3 +14,11 @@
     padding: none;
     width: fit-content;
 }
+
+.scrollable-container {
+    height: 100vh;
+    /* or any fixed height you prefer */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    /* optional: just to visualize the container */
+}

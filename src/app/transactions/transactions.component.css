@@ -36,6 +36,11 @@ td {
     color: #f13851;
 }
 
+tbody {
+    height: 100vh;
+    overflow-y: auto;
+}
+
 tbody tr:nth-child(even) {
     background-color: #f2f2f2;
     /* Light grey background for even rows */
