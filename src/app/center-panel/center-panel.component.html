@@ -1,6 +1,9 @@
 <div class="center-panel">
     <div class="a-title">
-        <p id="a">Your Networth: {{networth}}</p>
+        <p id="a">Total Invested Amount: {{invested_amount}}</p>
+    </div>
+    <div class="a-title">
+        <p id="a">Your Networth: {{networth+invested_amount/100}}</p>
         <hr>
     </div>
     <app-chart></app-chart>

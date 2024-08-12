@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MyWatchlistComponent } from './my-watchlist/my-watchlist.component';
 import { WatchlistItemComponent } from './watchlist-item/watchlist-item.component';
@@ -38,9 +38,9 @@ import { MarketCapChartComponent } from './market-cap-chart/market-cap-chart.com
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit, OnChanges {
+export class AppComponent implements OnInit, OnChanges, AfterViewInit {
   title = 'financial-portfolio-angular';
-
+  invested_amount: number = 0;
   watchlistItems: StockBought[] = [];
   holdings: Holding[] = [];
   dashboardData: any;
@@ -49,6 +49,9 @@ export class AppComponent implements OnInit, OnChanges {
   constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
+    // this.getWatchlistItems();
+  }
+  ngAfterViewInit(): void {
     this.getWatchlistItems();
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -63,6 +66,7 @@ export class AppComponent implements OnInit, OnChanges {
         this.dashboardData = data;
         this.holdings = this.dashboardData.holdings;
         this.transactions = this.dashboardData.transactions;
+        this.invested_amount = this.dashboardData.invested_amount;
         this.holdings.forEach((element) => {
           this.getStockInfo(element.symbol, element.weighted_average_price);
         });

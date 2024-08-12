@@ -33,8 +33,8 @@ export class ChartComponent implements OnInit {
 
   public isBrowser: boolean = true; // Ensure this condition is set correctly
   public symbol: string = 'AAPL'; // Default value
-  public startDate: string = '2024-07-15'; // Default value
-  public endDate: string = '2024-08-10'; // Default value
+  public startDate: string = '2024-06-22'; // Default value
+  public endDate: string = '2024-08-12'; // Default value
   showFirstChart: boolean = true;
 
   constructor(
@@ -101,7 +101,7 @@ export class ChartComponent implements OnInit {
         // Assign labels and data to networthChartData
         this.networthChartData.labels = labels;
         this.networthChartData.datasets[0].data = chartData;
-        this.networthChartData.datasets[0].label = "Networth";
+        this.networthChartData.datasets[0].label = "Realized Profit";
 
         // Manually trigger change detection
         this.cdr.detectChanges();

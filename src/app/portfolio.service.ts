@@ -10,8 +10,8 @@ export class PortfolioService {
   private baseUrl = "http://localhost:5000";
   private stockStatsUrl = `${this.baseUrl}/stock_stats`;
   private getDashboardUrl = `${this.baseUrl}/dashboard`;
-  private getHistoricalUrl =`${this.baseUrl}/historical_data`;
-  private getNetworthGraphUrl =`${this.baseUrl}/networthgraph_data`;
+  private getHistoricalUrl = `${this.baseUrl}/historical_data`;
+  private getNetworthGraphUrl = `${this.baseUrl}/networthgraph_data`;
   private dataSource = new BehaviorSubject<any>(null);
   currentData = this.dataSource.asObservable();
   constructor(private http: HttpClient) { }

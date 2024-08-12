@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChartComponent } from '../chart/chart.component';
 import { PortfolioService } from '../portfolio.service';
 
@@ -6,19 +6,20 @@ import { PortfolioService } from '../portfolio.service';
   selector: 'app-center-panel',
   standalone: true,
   imports: [
-    ChartComponent, 
+    ChartComponent,
 
   ],
   templateUrl: './center-panel.component.html',
   styleUrl: './center-panel.component.css',
- 
+
 })
 
 
 export class CenterPanelComponent implements OnInit {
   networth: number = 0;
+  @Input() invested_amount: number = 0;
 
-  constructor(private networthService: PortfolioService) {}
+  constructor(private networthService: PortfolioService) { }
 
   ngOnInit(): void {
     this.fetchNetworth();

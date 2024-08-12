@@ -53,7 +53,7 @@ export class MarketMoversComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['watchlistItems']) {
-      this.overviewItems = this.getRandomItems(this.watchlistItems, 6);
+      this.overviewItems = this.getRandomItems(this.watchlistItems, 8);
 
       this.getGainers();
       this.getLosers();
